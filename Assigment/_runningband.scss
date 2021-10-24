@@ -1,0 +1,65 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+
+@font-face 
+{
+  font-family: "Klarheit";
+  src: url("fonts/KlarheitKurrent-Medium.woff") format('woff');
+}
+$defaultFont: "Klarheit";
+@mixin Default-Font {
+  font-family: $defaultFont;
+  color: blue;
+}
+.line2 {
+@include Default-Font();
+  position: relative;
+  top: 10vh;
+  z-index: 0;
+  width: 100%;
+  height: 6vh;
+  border-bottom: 1px solid blue;
+  overflow: hidden;
+  font-size: 1.5rem;
+  background-color: white;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.marquee__inner {
+  display: flex;
+  
+}
+
+.marquee__line {
+    line-height: 110%;;
+
+  flex-shrink: 0;
+  margin: 0;
+  margin-right: 50%;
+  padding: auto;
+  min-width: 100%;
+  // white-space: nowrap;
+  animation-name: Line2;
+  animation-duration: 100s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes Line2 
+{
+  from {
+    transform: translateX(0);
+  }
+  
+  to {
+    transform: translateX(-100%);
+  }
+}
