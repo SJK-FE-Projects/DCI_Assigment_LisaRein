@@ -1,0 +1,435 @@
+@font-face {
+  font-family: "Klarheit";
+  src: url("fonts/KlarheitKurrent-Medium.woff") format('woff');
+}
+
+@import "./runningband";
+@import "./scrollbar";
+
+
+$defaultFont: "Klarheit";
+
+@mixin Default-Font {
+  font-family: $defaultFont;
+  color: blue;
+}
+
+@mixin BorderBottom {
+  border-bottom: blue 1px solid;
+}
+
+@mixin Border-Blue {
+  border: blue 1px solid;
+}
+
+@mixin Border-Top {
+  border: blue 1px solid;
+  box-shadow: 2px -2px 7px blue;
+
+}
+
+.Border-Bottom {
+  width: 100%;
+  @include BorderBottom();
+}
+
+@mixin BorderRight {
+  border-right: solid blue 1px;
+}
+
+@mixin Shadow-Bottom {
+  box-shadow: 2px 2px 7px blue;
+
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+hr {
+  border: none;
+
+}
+
+
+body {
+  margin: 0;
+  transition: 1s all;
+
+}
+
+h3 {
+  font-size: 28px;
+  padding-bottom: 20px;
+  @include BorderBottom();
+
+}
+
+h1 {
+  line-height: 110%;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+header .line1 p {
+  animation-name: floating;
+  animation-duration: 5s;
+  display: flex;
+  align-items: center;
+  animation-iteration-count: infinite;
+  transform: translateX(-20px);
+}
+
+@keyframes floating {
+  0% {
+    transform: translateX(-20vw)
+  }
+
+  50% {
+    transform: translateX(20vw)
+  }
+}
+
+header {
+  @include Default-Font();
+  @include BorderBottom();
+  font-size: 2rem;
+  background-color: white;
+
+  // ALTERNATIVE COLOR background-color: #9ACFDD;
+  // color: white;
+
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0px;
+  z-index: 1;
+  width: 100vw;
+  height: 8vh;
+  box-shadow: 2px 2px 7px blue;
+
+
+}
+
+.wrapper-columns {
+  overflow-y: scroll;
+
+  @include Default-Font();
+  top: 16vh;
+  position: fixed;
+  display: grid;
+  width: 100.5vw;
+  height: 86vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  transition: all 1s;
+
+
+
+
+  .column1,
+  .column2,
+  .column3,
+  .column4,
+  footer {
+    @include BorderRight();
+    font-family: $defaultFont;
+    overflow-y: scroll;
+    transition: all 1s;
+    margin-right: 0px;
+
+
+    img {
+      @include Shadow-Bottom();
+
+    }
+
+  }
+}
+
+.column1 {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  transition: all 2s;
+
+}
+
+.column2 {
+  grid-column-start: 4;
+  grid-column-end: 10;
+  transition: all 2s;
+
+}
+
+.column3 {
+  grid-column-start: 10;
+  grid-column-end: 13;
+  transition: all 2s;
+
+}
+
+.column4 {
+  grid-column-start: 13;
+  grid-column-end: 16;
+  transition: all 2s;
+
+}
+
+
+// HOVER ON COLUMNS--------->
+
+.column1:hover {
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+
+.column1:hover+.column2 {
+  grid-column-start: 5;
+  grid-column-end: 10;
+}
+
+.column3:hover {
+  grid-column-start: 10;
+  grid-column-end: 14;
+}
+
+.column3:hover+.column4 {
+  grid-column-start: 14;
+  grid-column-end: 16;
+}
+
+
+
+
+
+.menu-list {
+  padding: 10 10 0 10;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0px;
+
+}
+
+ul {
+
+
+  list-style-type: none;
+  margin-top: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+
+  a {
+    text-decoration: none;
+    @include Default-Font();
+    transition: all 1s;
+
+  }
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    border-collapse: collapse;
+
+    margin: 0 0 10 0;
+    background-color: none;
+    @include Border-Blue();
+    transition: 1s all;
+
+
+    padding: 5 0 5 10;
+  }
+
+  li:hover {
+    padding: 5 0 5 40;
+    background-color: blue;
+    color: white;
+  }
+
+  a:hover {
+    background-color: blue;
+    color: white;
+  }
+}
+
+// MOBILE ------------------------------------->
+@media only screen and (max-width: 600px) {
+  .wrapper-columns {
+    overflow-y: auto;
+    @include Default-Font();
+    position: static;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+    padding: 0px;
+    transition: all 1s;
+  }
+
+  .column1,
+  .column2,
+  .column3,
+  .column4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+// MOBILE END ------------------------------------->
+
+.column2 img {
+  object-fit: cover;
+}
+
+.headlinebar {
+  height: 15px;
+  background-color: #D80DF5;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 0 0 1 0;
+
+
+  p {
+    text-transform: uppercase;
+    font-size: 10px;
+    color: white;
+    padding: 1 1 2 10;
+    transition: 1s all;
+
+  }
+
+  p:hover {
+    padding-left: 50px;
+  }
+}
+
+.Project1 {
+  padding: 0 0 0 0;
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+}
+
+footer {
+  height: 100px;
+  width: 100%;
+  background-color: white;
+  position: sticky;
+  top: 100vh;
+  // overflow-y: scroll;
+  // bottom: 0px;
+  // left: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  @include Border-Top();
+
+  form {
+    height: auto;
+  }
+
+  p,
+  form {
+    padding: 10 50 10 50;
+  }
+
+  a,
+  input[type="submit"] {
+    @include Border-Blue();
+    height: 30px;
+    line-height: 100%;
+    text-decoration: none;
+    color: white;
+    background-color: blue;
+    border-radius: 30px;
+    padding: 5 20 5 20;
+  }
+
+  a:hover,
+  input[type="submit"] :hover {
+    color: blue;
+    border: blue 1px solid;
+    background-color: white;
+    transition: all 1s;
+  }
+
+  input[type="email"] {
+    padding-inline: 10px 40px;
+    height: 30px;
+    text-align: center;
+    color: blue;
+    @include Default-Font();
+    @include Border-Blue();
+    border-radius: 0 0 30 30px;
+    margin-right: -40px;
+  }
+
+  a:first-child {
+    margin-right: 20px;
+  }
+
+  a:last-child {
+    margin-left: 20px;
+  }
+
+  input[type="submit"]:hover {
+    transition: all 1s;
+    transform: translateX(5px);
+  }
+
+}
+
+
+input[type="email"]::-webkit-input-placeholder {
+  color: blue;
+}
+
+
+
+
+// MODAL ///////////////////////////////
+
+
+.modal-fullscreen {
+
+  height: 40vh;
+  width: 100vw;
+  position: absolute;
+  top: 30vh;
+  left: 0px;
+  padding: 0px;
+  display: inline-flex;
+  overflow-x: scroll;
+  flex-direction: row;
+  align-items: center;
+  justify-content: stretch;
+
+
+
+}
+
+
+
+.modal-content {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+  height: 100%;
+
+  background-color: none;
+
+
+
+  img {
+    object-fit: contain;
+    height: 100%;
+    width: auto;
+    margin: 0px;
+  }
+}
