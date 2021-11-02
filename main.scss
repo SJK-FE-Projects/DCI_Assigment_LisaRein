@@ -43,6 +43,7 @@ $defaultFont: "Klarheit";
 }
 
 * {
+  cursor: none;
   padding: 0px;
   margin: 0px;
 }
@@ -123,7 +124,7 @@ header {
   display: grid;
   width: 100.5vw;
   height: 86vh;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(15, 1fr);
   transition: all 1s;
 
 
@@ -132,13 +133,14 @@ header {
   .column1,
   .column2,
   .column3,
-  .column4,
-  footer {
+  .column4 {
     @include BorderRight();
     font-family: $defaultFont;
     overflow-y: scroll;
     transition: all 1s;
     margin-right: 0px;
+
+
 
 
     img {
@@ -158,13 +160,13 @@ header {
 
 .column2 {
   grid-column-start: 4;
-  grid-column-end: 10;
+  grid-column-end: 7;
   transition: all 2s;
 
 }
 
 .column3 {
-  grid-column-start: 10;
+  grid-column-start: 7;
   grid-column-end: 13;
   transition: all 2s;
 
@@ -185,19 +187,24 @@ header {
   grid-column-end: 5;
 }
 
-.column1:hover+.column2 {
+.column1:hover + .column2 {
   grid-column-start: 5;
-  grid-column-end: 10;
+  grid-column-end: 8;
 }
 
-.column3:hover {
-  grid-column-start: 10;
-  grid-column-end: 14;
+.column1:hover ~ .column3 {
+  grid-column-start: 8;
+  grid-column-end: 13;
 }
 
-.column3:hover+.column4 {
-  grid-column-start: 14;
-  grid-column-end: 16;
+.column2:hover {
+  grid-column-start: 4;
+  grid-column-end: 8;
+}
+
+.column2:hover + .column3 {
+  grid-column-start: 8;
+  grid-column-end: 13;
 }
 
 
@@ -254,6 +261,39 @@ ul {
   }
 }
 
+
+//  CURSOR -------------> 
+#circle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  border: 2px solid blue;
+  transition: all 50ms ease-in-out;
+  pointer-events: none;
+  animation: blobRadius 5s ease infinite, ease infinite;
+  z-index: calc(10*100);
+
+}
+
+// @keyframes blobRadius {
+//   0%, 100% { border-radius: 43% 77% 80% 40% / 40% 40% 80% 80%; }
+// 	20% { border-radius: 47% 73% 61% 59% / 47% 75% 45% 73%; }
+// 	40% { border-radius: 46% 74% 74% 46% / 74% 58% 62% 46%; }
+// 	60% { border-radius: 47% 73% 61% 59% / 40% 40% 80% 80%; }
+// 	80% { border-radius: 50% 70% 52% 68% / 51% 61% 59% 69%; }
+// }
+
+#circleblue {
+  background-color: blue;
+}
+
+.Project1 {
+  cursor: href="#circleblue";
+}
+
+
 // MOBILE ------------------------------------->
 @media only screen and (max-width: 600px) {
   .wrapper-columns {
@@ -275,6 +315,7 @@ ul {
     grid-template-columns: 1fr;
   }
 }
+
 
 // MOBILE END ------------------------------------->
 
@@ -318,7 +359,7 @@ footer {
   width: 100%;
   background-color: white;
   position: sticky;
-  top: 100vh;
+  top: calc(100vh);
   // overflow-y: scroll;
   // bottom: 0px;
   // left: 0px;
@@ -397,8 +438,8 @@ input[type="email"]::-webkit-input-placeholder {
 
 .modal-fullscreen {
 
-  height: 40vh;
-  width: 100vw;
+  height: 500px;
+  width: 100%;
   position: absolute;
   top: 30vh;
   left: 0px;
@@ -421,7 +462,7 @@ input[type="email"]::-webkit-input-placeholder {
   justify-content: center;
   padding: 0px;
   height: 100%;
-
+  overflow-x: scroll;
   background-color: none;
 
 
@@ -429,7 +470,7 @@ input[type="email"]::-webkit-input-placeholder {
   img {
     object-fit: contain;
     height: 100%;
-    width: auto;
+    width: 500px;
     margin: 0px;
   }
 }

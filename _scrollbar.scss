@@ -20,4 +20,8 @@
 
   // Horizontal Scroll -------------------->
 
-  
+  #Modal1::-webkit-scrollbar 
+  {
+    width: 8px;
+	overflow: auto;
+  }
