@@ -58,13 +58,13 @@ body {
   margin: 0;
   transition: 1s all;
 
+
 }
 
 h3 {
   font-size: 28px;
   padding-bottom: 20px;
   @include BorderBottom();
-
 }
 
 h1 {
@@ -108,8 +108,8 @@ header {
   justify-content: center;
   top: 0px;
   z-index: 1;
-  width: 100vw;
-  height: 8vh;
+  width: 100%;
+  height: 9vh;
   box-shadow: 2px 2px 7px blue;
 
 
@@ -119,11 +119,11 @@ header {
   overflow-y: scroll;
 
   @include Default-Font();
-  top: 16vh;
+  top: 19vh;
   position: fixed;
   display: grid;
   width: 100.5vw;
-  height: 86vh;
+  height: 70vh;
   grid-template-columns: repeat(15, 1fr);
   transition: all 1s;
 
@@ -137,8 +137,10 @@ header {
     @include BorderRight();
     font-family: $defaultFont;
     overflow-y: scroll;
-    transition: all 1s;
+    transition: all 2s;
     margin-right: 0px;
+    margin-bottom: 100px;
+    height: 100%;
 
 
 
@@ -212,7 +214,7 @@ header {
 
 
 .menu-list {
-  padding: 10 10 0 10;
+  padding: 0 10 0 10;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -235,7 +237,7 @@ ul {
 
   }
 
-  li {
+  a {
     display: flex;
     align-items: flex-start;
     border-collapse: collapse;
@@ -249,7 +251,7 @@ ul {
     padding: 5 0 5 10;
   }
 
-  li:hover {
+  a:hover {
     padding: 5 0 5 40;
     background-color: blue;
     color: white;
@@ -270,9 +272,8 @@ ul {
   width: 35px;
   border-radius: 50%;
   border: 2px solid blue;
-  transition: all 50ms ease-in-out;
+  transition: all 0ms ease-in-out;
   pointer-events: none;
-  animation: blobRadius 5s ease infinite, ease infinite;
   z-index: calc(10*100);
 
 }
@@ -324,11 +325,11 @@ ul {
 }
 
 .headlinebar {
-  height: 15px;
+  height: 20px;
   background-color: #D80DF5;
   width: 100%;
   margin-bottom: 20px;
-  padding: 0 0 1 0;
+  padding: 2;
 
 
   p {
@@ -355,13 +356,18 @@ ul {
 }
 
 footer {
+  position: fixed;
+  bottom: 0px;
   height: 100px;
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  // grid-column-start: 1;
+  // grid-column-end: 16;
   background-color: white;
-  position: sticky;
-  top: calc(100vh);
+  // margin-bottom: -100px;
   // overflow-y: scroll;
-  // bottom: 0px;
+bottom: 0px;
   // left: 0px;
   display: flex;
   flex-direction: row;
