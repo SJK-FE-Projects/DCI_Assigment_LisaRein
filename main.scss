@@ -43,6 +43,7 @@ $defaultFont: "Klarheit";
 }
 
 * {
+  cursor: none;
   padding: 0px;
   margin: 0px;
 }
@@ -57,13 +58,13 @@ body {
   margin: 0;
   transition: 1s all;
 
+
 }
 
 h3 {
   font-size: 28px;
   padding-bottom: 20px;
   @include BorderBottom();
-
 }
 
 h1 {
@@ -107,8 +108,8 @@ header {
   justify-content: center;
   top: 0px;
   z-index: 1;
-  width: 100vw;
-  height: 8vh;
+  width: 100%;
+  height: 9vh;
   box-shadow: 2px 2px 7px blue;
 
 
@@ -118,12 +119,12 @@ header {
   overflow-y: scroll;
 
   @include Default-Font();
-  top: 16vh;
+  top: 19vh;
   position: fixed;
   display: grid;
   width: 100.5vw;
-  height: 86vh;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: 70vh;
+  grid-template-columns: repeat(15, 1fr);
   transition: all 1s;
 
 
@@ -132,13 +133,16 @@ header {
   .column1,
   .column2,
   .column3,
-  .column4,
-  footer {
+  .column4 {
     @include BorderRight();
     font-family: $defaultFont;
     overflow-y: scroll;
-    transition: all 1s;
+    transition: all 2s;
     margin-right: 0px;
+    margin-bottom: 100px;
+    height: 100%;
+
+
 
 
     img {
@@ -158,13 +162,13 @@ header {
 
 .column2 {
   grid-column-start: 4;
-  grid-column-end: 10;
+  grid-column-end: 7;
   transition: all 2s;
 
 }
 
 .column3 {
-  grid-column-start: 10;
+  grid-column-start: 7;
   grid-column-end: 13;
   transition: all 2s;
 
@@ -187,17 +191,22 @@ header {
 
 .column1:hover+.column2 {
   grid-column-start: 5;
-  grid-column-end: 10;
+  grid-column-end: 8;
 }
 
-.column3:hover {
-  grid-column-start: 10;
-  grid-column-end: 14;
+.column1:hover~.column3 {
+  grid-column-start: 8;
+  grid-column-end: 13;
 }
 
-.column3:hover+.column4 {
-  grid-column-start: 14;
-  grid-column-end: 16;
+.column2:hover {
+  grid-column-start: 4;
+  grid-column-end: 8;
+}
+
+.column2:hover+.column3 {
+  grid-column-start: 8;
+  grid-column-end: 13;
 }
 
 
@@ -205,7 +214,7 @@ header {
 
 
 .menu-list {
-  padding: 10 10 0 10;
+  padding: 0 10 0 10;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -228,7 +237,7 @@ ul {
 
   }
 
-  li {
+  a {
     display: flex;
     align-items: flex-start;
     border-collapse: collapse;
@@ -242,7 +251,7 @@ ul {
     padding: 5 0 5 10;
   }
 
-  li:hover {
+  a:hover {
     padding: 5 0 5 40;
     background-color: blue;
     color: white;
@@ -253,6 +262,38 @@ ul {
     color: white;
   }
 }
+
+
+//  CURSOR -------------> 
+#circle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  border: 2px solid blue;
+  transition: all 0ms ease-in-out;
+  pointer-events: none;
+  z-index: calc(10*100);
+
+}
+
+// @keyframes blobRadius {
+//   0%, 100% { border-radius: 43% 77% 80% 40% / 40% 40% 80% 80%; }
+// 	20% { border-radius: 47% 73% 61% 59% / 47% 75% 45% 73%; }
+// 	40% { border-radius: 46% 74% 74% 46% / 74% 58% 62% 46%; }
+// 	60% { border-radius: 47% 73% 61% 59% / 40% 40% 80% 80%; }
+// 	80% { border-radius: 50% 70% 52% 68% / 51% 61% 59% 69%; }
+// }
+
+#circleblue {
+  background-color: blue;
+}
+
+.Project1 {
+  cursor: href="#circleblue";
+}
+
 
 // MOBILE ------------------------------------->
 @media only screen and (max-width: 600px) {
@@ -276,6 +317,7 @@ ul {
   }
 }
 
+
 // MOBILE END ------------------------------------->
 
 .column2 img {
@@ -283,11 +325,11 @@ ul {
 }
 
 .headlinebar {
-  height: 15px;
+  height: 20px;
   background-color: #D80DF5;
   width: 100%;
   margin-bottom: 20px;
-  padding: 0 0 1 0;
+  padding: 2;
 
 
   p {
@@ -313,21 +355,24 @@ ul {
   }
 }
 
+.move-up{
+  position: fixed;
+  bottom: 50px;
+}
+
 footer {
+  position: fixed;
+  bottom: -50px;
   height: 100px;
-  width: 100%;
+  width: 100vw;
   background-color: white;
-  position: sticky;
-  top: 100vh;
-  // overflow-y: scroll;
-  // bottom: 0px;
-  // left: 0px;
+  margin-bottom: 0px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
   @include Border-Top();
+
 
   form {
     height: auto;
@@ -397,8 +442,8 @@ input[type="email"]::-webkit-input-placeholder {
 
 .modal-fullscreen {
 
-  height: 40vh;
-  width: 100vw;
+  height: 500px;
+  width: 100%;
   position: absolute;
   top: 30vh;
   left: 0px;
@@ -408,9 +453,6 @@ input[type="email"]::-webkit-input-placeholder {
   flex-direction: row;
   align-items: center;
   justify-content: stretch;
-
-
-
 }
 
 
@@ -421,7 +463,7 @@ input[type="email"]::-webkit-input-placeholder {
   justify-content: center;
   padding: 0px;
   height: 100%;
-
+  overflow-x: scroll;
   background-color: none;
 
 
@@ -429,7 +471,7 @@ input[type="email"]::-webkit-input-placeholder {
   img {
     object-fit: contain;
     height: 100%;
-    width: auto;
+    width: 500px;
     margin: 0px;
   }
 }
