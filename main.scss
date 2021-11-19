@@ -189,12 +189,12 @@ header {
   grid-column-end: 5;
 }
 
-.column1:hover + .column2 {
+.column1:hover+.column2 {
   grid-column-start: 5;
   grid-column-end: 8;
 }
 
-.column1:hover ~ .column3 {
+.column1:hover~.column3 {
   grid-column-start: 8;
   grid-column-end: 13;
 }
@@ -204,7 +204,7 @@ header {
   grid-column-end: 8;
 }
 
-.column2:hover + .column3 {
+.column2:hover+.column3 {
   grid-column-start: 8;
   grid-column-end: 13;
 }
@@ -355,26 +355,24 @@ ul {
   }
 }
 
+.move-up{
+  position: fixed;
+  bottom: 50px;
+}
+
 footer {
   position: fixed;
-  bottom: 0px;
+  bottom: -50px;
   height: 100px;
-  display: flex;
-  flex-direction: row;
   width: 100vw;
-  // grid-column-start: 1;
-  // grid-column-end: 16;
   background-color: white;
-  // margin-bottom: -100px;
-  // overflow-y: scroll;
-bottom: 0px;
-  // left: 0px;
+  margin-bottom: 0px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
   @include Border-Top();
+
 
   form {
     height: auto;
@@ -455,9 +453,6 @@ input[type="email"]::-webkit-input-placeholder {
   flex-direction: row;
   align-items: center;
   justify-content: stretch;
-
-
-
 }
 
 

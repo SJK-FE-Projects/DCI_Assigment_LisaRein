@@ -444,10 +444,18 @@ ul a:hover {
   width: 100%;
 }
 
+.move-up {
+  position: fixed;
+  bottom: 50px;
+}
+
 footer {
   position: fixed;
-  bottom: 0px;
+  bottom: -50px;
   height: 100px;
+  width: 100vw;
+  background-color: white;
+  margin-bottom: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -455,11 +463,6 @@ footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: 100vw;
-  background-color: white;
-  bottom: 0px;
-  display: flex;
-  flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
